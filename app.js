@@ -12,7 +12,7 @@ app.use(cors());
 app.get('/latest-news', async (req, res) => {
     try {
         // Fetch the HTML from the news page
-        const { data } = await axios.get('https://motoroctane.com/news', {
+        const { data } = await axios.get('https://motoroctane.com/web-stories', {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
             },
@@ -25,7 +25,7 @@ app.get('/latest-news', async (req, res) => {
         const news = [];
 
         // Find each news item and extract the necessary details
-        $('.section_post_box').each((index, element) => {
+        $('.webstoriessection').each((index, element) => {
             const title = $(element).find('.title a').text().trim();
             const url = $(element).find('.title a').attr('href');
             const thumbnail = $(element).find('.thumbnail img').attr('data-lazy-src');
